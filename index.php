@@ -20,3 +20,4 @@ while($row = mysqli_fetch_array($result1)){
 </ul>
 <p>by <?=$article['author']?></p>
 <p><?=$article['description']?></p>
+<p><a href="create.php">create</a></p>
