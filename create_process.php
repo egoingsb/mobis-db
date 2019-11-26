@@ -4,9 +4,9 @@ $sql = "
     INSERT INTO topic
         (title, description, author, created)
         VALUES(
-            '{$_GET['title']}',
-            '{$_GET['description']}',
-            '{$_GET['author']}',
+            '{$_POST['title']}',
+            '{$_POST['description']}',
+            '{$_POST['author']}',
             NOW()
         )
 ";
