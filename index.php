@@ -14,7 +14,7 @@ $article = mysqli_fetch_array($result2);
 <ul>
 <?php
 while($row = mysqli_fetch_array($result1)){
-	print("<li>".$row['title']."</li>");
+	print("<li><a href=\"index.php?id=".$row['id']."\">".$row['title']."</a></li>");
 }
 ?>
 </ul>
