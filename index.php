@@ -40,3 +40,17 @@ while($authors = mysqli_fetch_array($result3)){
 </ul>
 <p><?=$article['description']?></p>
 <p><a href="create.php">create</a></p>
+
+<?php
+$sql = "SELECT * FROM comment LEFT JOIN author ON comment.author_id = author.id WHERE topic_id = {$_GET['id']}";
+$result4 = mysqli_query($conn1, $sql);
+?>
+<ul>
+<?php
+while($comments = mysqli_fetch_array($result4)){
+	print("<p>");
+	print("글쓴이 : {$comments['name']}");
+	print("댓글내용 : {$comments['description']}");
+	print("</p>");
+}
+?>
