@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-firestore.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBlf-ne7SyROGRFc78WmTxFZMdrTNUCuD8",
+    authDomain: "mobis-cfa9a.firebaseapp.com",
+    databaseURL: "https://mobis-cfa9a.firebaseio.com",
+    projectId: "mobis-cfa9a",
+    storageBucket: "mobis-cfa9a.appspot.com",
+    messagingSenderId: "10944565477",
+    appId: "1:10944565477:web:7da2fa7042fb511a92c40c",
+    measurementId: "G-2F4TNXXK1E"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  
+</script>
+    </head>
+    <body>
+        <input type="button" onclick="comment();" value="add comment">
+        <ul id="list">
+
+        </ul>
+        <script>
+            var db = firebase.firestore();
+            function comment(){
+                db.collection("egoing").add({
+                    comment:prompt("한말씀 부탁드립니다")
+                })
+            }
+            db.collection("egoing")
+                .onSnapshot(function(querySnapshot) {
+                    var commentsTag = "";
+                    querySnapshot.forEach(function(doc) {
+                        commentsTag += `<li>${doc.data().comment}</li>`;
+                    });
+                    document.querySelector('#list').innerHTML = commentsTag;
+                });
+        </script>
+    </body>
+</html>
